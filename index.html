@@ -14,6 +14,7 @@
             font-family: "Microsoft Yahei", sans-serif;
             background: linear-gradient(180deg, #fff 0%, #fff8fa 30%, #fff0f4 60%, #ffe8ef 100%);
             position: relative;
+            cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><text y='18' font-size='16'>💕</text></svg>"), auto;
         }
 
         /* ===== 背景光斑 ===== */
@@ -24,18 +25,12 @@
             opacity: 0.3;
             pointer-events: none;
             z-index: 0;
-            animation: orbAnim 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes orbAnim {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(20px, -15px) scale(1.08); }
         }
 
         /* ===== 标题 ===== */
         .header {
             position: fixed;
-            top: max(12px, 2.5vh);
+            top: max(15px, 3vh);
             width: 100%;
             text-align: center;
             z-index: 100;
@@ -44,7 +39,7 @@
         .title {
             color: #d63384;
             font-size: clamp(18px, 5vw, 30px);
-            text-shadow: 0 2px 12px rgba(214, 51, 132, 0.2);
+            text-shadow: 0 2px 12px rgba(214,51,132,0.2);
             letter-spacing: 2px;
             opacity: 0;
         }
@@ -52,7 +47,7 @@
         .tip {
             color: #e075a0;
             font-size: clamp(12px, 3vw, 15px);
-            margin-top: 5px;
+            margin-top: 6px;
             opacity: 0;
         }
 
@@ -61,7 +56,7 @@
         .progress-wrap {
             width: min(180px, 45vw);
             height: 5px;
-            background: rgba(255, 182, 193, 0.3);
+            background: rgba(255,182,193,0.3);
             border-radius: 3px;
             margin: 8px auto 0;
             overflow: hidden;
@@ -73,9 +68,10 @@
             width: 0%;
             background: linear-gradient(90deg, #ff8fab, #d63384);
             border-radius: 3px;
+            transition: width 0.1s;
         }
 
-        /* ===== 花束主体 ===== */
+        /* ===== 花束 ===== */
         .bouquet-wrap {
             position: fixed;
             top: 50%;
@@ -88,11 +84,10 @@
             opacity: 0;
         }
 
-        /* 圆形花朵区域 */
         .flower-ball {
             position: relative;
-            width: min(250px, 62vw);
-            height: min(250px, 62vw);
+            width: min(240px, 60vw);
+            height: min(240px, 60vw);
             border-radius: 50%;
         }
 
@@ -101,29 +96,21 @@
             user-select: none;
             opacity: 0;
             transform: scale(0);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
-            line-height: 1;
         }
 
-        .flower-ball .rose-item.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* 绿叶 */
         .leaves {
             position: relative;
-            width: min(210px, 52vw);
-            height: 38px;
-            margin-top: -14px;
+            width: min(200px, 50vw);
+            height: 35px;
+            margin-top: -12px;
             display: flex;
             justify-content: center;
             z-index: 2;
         }
 
         .leaf {
-            width: clamp(16px, 4vw, 26px);
-            height: clamp(26px, 5.5vw, 38px);
+            width: clamp(18px, 4.5vw, 28px);
+            height: clamp(28px, 6vw, 40px);
             background: linear-gradient(160deg, #66bb6a, #2e7d32);
             border-radius: 50% 0 50% 0;
             transform-origin: bottom center;
@@ -131,33 +118,32 @@
             margin: 0 1px;
         }
 
-        /* 包装纸 */
         .paper-wrap {
             position: relative;
-            width: min(130px, 35vw);
-            height: min(110px, 24vw);
+            width: min(140px, 38vw);
+            height: min(120px, 26vw);
             background: linear-gradient(170deg, #fff5f7, #ffe4ec, #ffd6e0);
             clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
             margin-top: -3px;
-            box-shadow: 0 8px 25px rgba(214, 51, 132, 0.1);
+            box-shadow: 0 8px 25px rgba(214,51,132,0.1);
             opacity: 0;
         }
 
         .bow {
             position: absolute;
-            top: -9px;
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 34px;
-            height: 20px;
+            width: 36px;
+            height: 22px;
         }
 
         .bow::before, .bow::after {
             content: '';
             position: absolute;
             top: 4px;
-            width: 15px;
-            height: 12px;
+            width: 16px;
+            height: 13px;
             background: linear-gradient(135deg, #ff6b9d, #e91e63);
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
         }
@@ -167,11 +153,9 @@
 
         .bow .knot {
             position: absolute;
-            top: 6px;
-            left: 50%;
+            top: 7px; left: 50%;
             transform: translateX(-50%);
-            width: 7px;
-            height: 7px;
+            width: 7px; height: 7px;
             background: #d63384;
             border-radius: 50%;
         }
@@ -184,7 +168,7 @@
             user-select: none;
         }
 
-        /* ===== 点击爱心 ===== */
+        /* ===== 点击爆炸爱心 ===== */
         .click-heart {
             position: fixed;
             pointer-events: none;
@@ -192,22 +176,23 @@
             user-select: none;
         }
 
-        /* ===== 鼠标轨迹 ===== */
+        /* ===== 鼠标跟随 ===== */
         .cursor-trail {
             position: fixed;
             pointer-events: none;
             z-index: 998;
             user-select: none;
+            opacity: 0.8;
         }
 
         /* ===== 底部文字 ===== */
         .end-text {
             position: fixed;
-            bottom: max(10px, 2vh);
+            bottom: max(12px, 2.5vh);
             width: 100%;
             text-align: center;
             color: #d63384;
-            font-size: clamp(12px, 3.2vw, 17px);
+            font-size: clamp(13px, 3.5vw, 18px);
             z-index: 100;
             opacity: 0;
         }
@@ -215,10 +200,10 @@
         /* ===== 情侣+泰迪 ===== */
         .couple-section {
             position: fixed;
-            bottom: max(30px, 4.5vh);
+            bottom: max(35px, 5vh);
             right: max(8px, 2vw);
             z-index: 60;
-            transform: scale(clamp(0.6, 1.8vw, 0.85));
+            transform: scale(clamp(0.65, 1.8vw, 0.9));
             transform-origin: bottom right;
             opacity: 0;
         }
@@ -241,37 +226,37 @@
         .boy { position: relative; width: 36px; height: 72px; }
         .boy .b-head { width: 18px; height: 18px; background: #ffcc80; border-radius: 50%; margin: 0 auto; position: relative; }
         .boy .b-hair { position: absolute; top: -2px; left: 2px; width: 14px; height: 9px; background: #3e2723; border-radius: 50% 50% 0 0; }
-        .boy .b-body { width: 22px; height: 28px; background: linear-gradient(#1565c0, #0d47a1); margin: 2px auto 0; border-radius: 5px 5px 2px 2px; }
+        .boy .b-body { width: 22px; height: 28px; background: linear-gradient(#1565c0,#0d47a1); margin: 2px auto 0; border-radius: 5px 5px 2px 2px; }
         .boy .b-legs { display: flex; justify-content: center; gap: 2px; }
         .boy .b-leg { width: 7px; height: 18px; background: #37474f; border-radius: 0 0 3px 3px; }
 
         .girl { position: relative; width: 36px; height: 72px; }
         .girl .g-head { width: 16px; height: 16px; background: #ffcc80; border-radius: 50%; margin: 0 auto; position: relative; }
         .girl .g-hair { position: absolute; top: -3px; left: -2px; width: 20px; height: 12px; background: #4e342e; border-radius: 50% 50% 30% 30%; }
-        .girl .g-hair::after, .girl .g-hair::before { content: ''; position: absolute; top: 7px; width: 5px; height: 12px; background: #4e342e; border-radius: 0 0 3px 3px; }
+        .girl .g-hair::after, .girl .g-hair::before { content:''; position:absolute; top:7px; width:5px; height:12px; background:#4e342e; border-radius:0 0 3px 3px; }
         .girl .g-hair::after { left: -1px; }
         .girl .g-hair::before { right: -1px; }
-        .girl .g-dress { width: 24px; height: 28px; background: linear-gradient(#e91e63, #c2185b); margin: 2px auto 0; clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%); }
+        .girl .g-dress { width: 24px; height: 28px; background: linear-gradient(#e91e63,#c2185b); margin: 2px auto 0; clip-path: polygon(25% 0%,75% 0%,100% 100%,0% 100%); }
         .girl .g-legs { display: flex; justify-content: center; gap: 2px; }
         .girl .g-leg { width: 6px; height: 14px; background: #ffcc80; border-radius: 0 0 3px 3px; }
 
         .teddy { position: relative; width: 40px; height: 40px; margin-left: 5px; }
-        .teddy .t-body { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 24px; height: 20px; background: linear-gradient(135deg, #d4a574, #b8865a); border-radius: 50% 50% 45% 45%; }
-        .teddy .t-head { position: absolute; top: 3px; left: 50%; transform: translateX(-50%); width: 20px; height: 18px; background: linear-gradient(135deg, #d4a574, #c4956a); border-radius: 50%; z-index: 2; }
-        .teddy .t-ear { position: absolute; top: 0; width: 8px; height: 8px; background: #a0714a; border-radius: 50%; z-index: 1; }
+        .teddy .t-body { position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:24px; height:20px; background:linear-gradient(135deg,#d4a574,#b8865a); border-radius:50% 50% 45% 45%; }
+        .teddy .t-head { position:absolute; top:3px; left:50%; transform:translateX(-50%); width:20px; height:18px; background:linear-gradient(135deg,#d4a574,#c4956a); border-radius:50%; z-index:2; }
+        .teddy .t-ear { position:absolute; top:0; width:8px; height:8px; background:#a0714a; border-radius:50%; z-index:1; }
         .teddy .t-ear.l { left: 8px; }
         .teddy .t-ear.r { right: 8px; }
-        .teddy .t-eye { position: absolute; top: 9px; width: 3px; height: 3px; background: #1a1a1a; border-radius: 50%; z-index: 3; }
+        .teddy .t-eye { position:absolute; top:9px; width:3px; height:3px; background:#1a1a1a; border-radius:50%; z-index:3; }
         .teddy .t-eye.l { left: 13px; }
         .teddy .t-eye.r { right: 13px; }
-        .teddy .t-nose { position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 4px; height: 3px; background: #1a1a1a; border-radius: 50%; z-index: 3; }
-        .teddy .t-tail { position: absolute; bottom: 7px; right: 3px; width: 7px; height: 7px; background: #d4a574; border-radius: 50%; }
+        .teddy .t-nose { position:absolute; top:13px; left:50%; transform:translateX(-50%); width:4px; height:3px; background:#1a1a1a; border-radius:50%; z-index:3; }
+        .teddy .t-tail { position:absolute; bottom:7px; right:3px; width:7px; height:7px; background:#d4a574; border-radius:50%; }
 
         /* ===== 完成弹窗 ===== */
         .complete-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0);
+            background: rgba(255,255,255,0);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -282,7 +267,7 @@
         }
 
         .complete-overlay.show {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255,255,255,0.88);
             pointer-events: auto;
         }
 
@@ -301,7 +286,7 @@
             opacity: 0;
         }
 
-        /* ===== 烟花 ===== */
+        /* ===== 烟花粒子 ===== */
         .firework-particle {
             position: fixed;
             pointer-events: none;
@@ -313,9 +298,9 @@
 <body>
     <!-- 背景光斑 -->
     <div class="bg-orb" style="width:45vmin;height:45vmin;background:rgba(255,182,193,0.4);top:-8%;left:-8%;"></div>
-    <div class="bg-orb" style="width:38vmin;height:38vmin;background:rgba(255,228,235,0.5);top:12%;right:-6%;animation-delay:-3s;"></div>
-    <div class="bg-orb" style="width:32vmin;height:32vmin;background:rgba(230,210,255,0.3);bottom:8%;left:8%;animation-delay:-5s;"></div>
-    <div class="bg-orb" style="width:28vmin;height:28vmin;background:rgba(255,240,245,0.5);top:38%;left:38%;animation-delay:-2s;"></div>
+    <div class="bg-orb" style="width:38vmin;height:38vmin;background:rgba(255,228,235,0.5);top:12%;right:-6%;"></div>
+    <div class="bg-orb" style="width:32vmin;height:32vmin;background:rgba(230,210,255,0.3);bottom:8%;left:8%;"></div>
+    <div class="bg-orb" style="width:28vmin;height:28vmin;background:rgba(255,240,245,0.5);top:38%;left:38%;"></div>
 
     <!-- 标题 -->
     <div class="header">
@@ -329,12 +314,12 @@
         <div class="flower-ball" id="flowerBall"></div>
         <div class="leaves" id="leavesRow">
             <div class="leaf" style="transform:rotate(-30deg)"></div>
-            <div class="leaf" style="transform:rotate(-18deg)"></div>
-            <div class="leaf" style="transform:rotate(-6deg)"></div>
+            <div class="leaf" style="transform:rotate(-15deg)"></div>
             <div class="leaf" style="transform:rotate(0deg)"></div>
-            <div class="leaf" style="transform:rotate(6deg) scaleX(-1)"></div>
-            <div class="leaf" style="transform:rotate(18deg) scaleX(-1)"></div>
+            <div class="leaf" style="transform:rotate(15deg) scaleX(-1)"></div>
             <div class="leaf" style="transform:rotate(30deg) scaleX(-1)"></div>
+            <div class="leaf" style="transform:rotate(-20deg)"></div>
+            <div class="leaf" style="transform:rotate(20deg) scaleX(-1)"></div>
         </div>
         <div class="paper-wrap" id="paperWrap">
             <div class="bow"><div class="knot"></div></div>
@@ -379,123 +364,124 @@
     </div>
 
     <script>
-    $(function () {
-        var maxRose = 999;
-        var total = 0;
+    $(function() {
+        const maxRose = 999;
+        let total = 0;
+        let bouquetBuilt = false;
+
+        // ===== 初始化背景光斑动画 =====
+        $('.bg-orb').each(function(i) {
+            $(this).css({
+                animation: `orbMove${i % 2 === 0 ? 'A' : 'B'} ${8 + i * 2}s ease-in-out infinite alternate`
+            });
+        });
+
+        // 注入光斑动画keyframes
+        $('<style>')
+            .text(`
+                @keyframes orbMoveA { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(25px,-18px) scale(1.1)} }
+                @keyframes orbMoveB { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(-20px,15px) scale(1.05)} }
+            `)
+            .appendTo('head');
 
         // ===== 入场动画 =====
-        $('.title').delay(200).animate({ opacity: 1 }, 600);
-        $('.tip').delay(500).animate({ opacity: 1 }, 500);
-        $('.progress-wrap').delay(700).animate({ opacity: 1 }, 500);
-        $('#bouquetWrap').delay(400).animate({ opacity: 1 }, 800);
-        $('#coupleSection').delay(1000).animate({ opacity: 1 }, 700);
+        $('.title').delay(300).animate({ opacity: 1 }, 800);
+        $('.tip').delay(600).animate({ opacity: 1 }, 600);
+        $('.progress-wrap').delay(800).animate({ opacity: 1 }, 600);
+        $('#bouquetWrap').delay(500).animate({ opacity: 1 }, 1000);
+        $('#coupleSection').delay(1200).animate({ opacity: 1 }, 800);
 
-        // ===== 黄金角排列填满圆形（无缝隙）=====
+        // ===== 构建花束（圆形花朵）=====
         function buildFlowerBall() {
-            var $ball = $('#flowerBall');
-            var size = $ball.width() || 250;
-            var radius = size / 2;
-            var goldenAngle = Math.PI * (3 - Math.sqrt(5));
-            var count = 120;
-            var maxR = radius - 6;
-            var positions = [];
+            const $ball = $('#flowerBall');
+            const size = $ball.width();
+            const count = 75;
+            const roses = [];
 
-            // 黄金角螺旋填充
-            for (var i = 0; i < count; i++) {
-                var r = maxR * Math.sqrt(i / count);
-                var theta = i * goldenAngle;
-                var x = radius + r * Math.cos(theta);
-                var y = radius + r * Math.sin(theta);
-                positions.push({ x: x, y: y, dist: r });
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const r = Math.sqrt(Math.random()) * (size / 2 - 12);
+                const x = size / 2 + Math.cos(angle) * r - 10;
+                const y = size / 2 + Math.sin(angle) * r - 10;
+                roses.push({ x, y });
             }
 
-            // 边缘补充一圈
-            var edgeCount = 24;
-            for (var j = 0; j < edgeCount; j++) {
-                var angle = (j / edgeCount) * Math.PI * 2;
-                var ex = radius + (maxR - 3) * Math.cos(angle);
-                var ey = radius + (maxR - 3) * Math.sin(angle);
-                positions.push({ x: ex, y: ey, dist: maxR });
-            }
+            // 按距离中心排序，由内向外绽放
+            roses.sort((a, b) => {
+                const da = Math.hypot(a.x - size/2, a.y - size/2);
+                const db = Math.hypot(b.x - size/2, b.y - size/2);
+                return da - db;
+            });
 
-            // 再补一圈内环
-            var innerCount = 16;
-            for (var k = 0; k < innerCount; k++) {
-                var a2 = (k / innerCount) * Math.PI * 2 + 0.3;
-                var ix = radius + (maxR * 0.55) * Math.cos(a2);
-                var iy = radius + (maxR * 0.55) * Math.sin(a2);
-                positions.push({ x: ix, y: iy, dist: maxR * 0.55 });
-            }
-
-            // 按距离排序
-            positions.sort(function (a, b) { return a.dist - b.dist; });
-
-            // 花朵大小：确保无缝覆盖
-            var flowerSize = Math.max(16, Math.floor(size / 10));
-
-            positions.forEach(function (pos, idx) {
-                var $rose = $('<span class="rose-item">🌹</span>').css({
-                    left: (pos.x - flowerSize / 2) + 'px',
-                    top: (pos.y - flowerSize / 2) + 'px',
-                    fontSize: flowerSize + 'px'
+            roses.forEach((pos, i) => {
+                const $rose = $('<span class="rose-item">🌹</span>').css({
+                    left: pos.x + 'px',
+                    top: pos.y + 'px',
+                    fontSize: (14 + Math.random() * 8) + 'px'
                 });
                 $ball.append($rose);
 
-                setTimeout(function () {
-                    $rose.addClass('show');
-                }, 500 + idx * 20);
+                setTimeout(() => {
+                    $rose.animate({ opacity: 1 }, 300);
+                    $rose.css('transform', 'scale(1)');
+                    $rose.css({
+                        transition: 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+                    });
+                }, 800 + i * 30);
             });
 
             // 绿叶出现
-            setTimeout(function () {
-                $('.leaf').each(function (i) {
-                    $(this).delay(i * 80).animate({ opacity: 1 }, 350);
+            setTimeout(() => {
+                $('.leaf').each(function(i) {
+                    $(this).delay(i * 100).animate({ opacity: 1 }, 400);
                 });
-            }, 500 + positions.length * 20 + 100);
+            }, 800 + count * 30 + 200);
 
             // 包装纸出现
-            setTimeout(function () {
-                $('#paperWrap').animate({ opacity: 1 }, 500);
-            }, 500 + positions.length * 20 + 600);
+            setTimeout(() => {
+                $('#paperWrap').animate({ opacity: 1 }, 600);
+            }, 800 + count * 30 + 800);
         }
 
         buildFlowerBall();
 
-        // ===== 匀速飘落玫瑰 =====
+        // ===== 999朵玫瑰飘落 =====
         function createFallingRose() {
             if (total >= maxRose) return;
 
-            var size = 14 + Math.random() * 14;
-            var startX = Math.random() * ($(window).width() - 30);
-            var winH = $(window).height();
-            var speed = 100 + Math.random() * 50; // 像素/秒 匀速
-            var duration = ((winH + 80) / speed) * 1000;
-            var rotateTotal = 200 + Math.random() * 300;
+            const size = 14 + Math.random() * 16;
+            const startX = Math.random() * $(window).width();
+            const dur = 3000 + Math.random() * 4000;
+            const sway = (Math.random() - 0.5) * 100;
 
-            var $rose = $('<div class="falling-rose">🌹</div>').css({
+            const $rose = $('<div class="falling-rose">🌹</div>').css({
                 left: startX + 'px',
-                top: '-35px',
+                top: -40 + 'px',
                 fontSize: size + 'px'
             });
 
             $('body').append($rose);
 
-            // 匀速下落
-            $rose.animate(
-                { top: winH + 50 },
-                {
-                    duration: duration,
-                    easing: 'linear',
-                    step: function (now) {
-                        var progress = (now + 35) / (winH + 85);
-                        var rot = progress * rotateTotal;
-                        $(this).css('transform', 'rotate(' + rot + 'deg)');
-                    },
-                    complete: function () {
-                        $(this).remove();
+            // jQuery动画：飘落 + 摇摆 + 消失
+            $rose.animate({
+                top: $(window).height() + 50,
+                left: startX + sway,
+                opacity: 0
+            }, {
+                duration: dur,
+                easing: 'linear',
+                step: function(now, fx) {
+                    if (fx.prop === 'top') {
+                        const progress = now / $(window).height();
+                        const rotate = progress * 360;
+                        const scale = 1 - progress * 0.4;
+                        $(this).css('transform', `rotate(${rotate}deg) scale(${scale})`);
                     }
+                },
+                complete: function() {
+                    $(this).remove();
                 }
-            );
+            });
 
             total++;
             $('#num').text(total);
@@ -507,178 +493,123 @@
         }
 
         // 定时生成
-        var genInterval = 65;
-        var genTimer = setInterval(function () {
+        let genInterval = 70;
+        const genTimer = setInterval(() => {
             createFallingRose();
             if (total > 400) genInterval = 45;
             if (total > 700) genInterval = 30;
             if (total >= maxRose) clearInterval(genTimer);
         }, genInterval);
 
-        // ===== 完成 =====
+        // ===== 完成回调 =====
         function onAllComplete() {
-            setTimeout(function () {
-                typeWriter($('#endText'), '💌 予你天长地久的偏爱，999朵玫瑰代表长长久久', 70);
+            setTimeout(() => {
+                $('#endText').text('💌 予你天长地久的偏爱，999朵玫瑰代表长长久久').animate({ opacity: 1 }, 1500);
             }, 1000);
 
-            setTimeout(function () {
+            setTimeout(() => {
                 $('#completeOverlay').addClass('show');
-                $('#bigHeart').css({
-                    opacity: 1,
-                    transform: 'scale(1)',
-                    transition: 'all 0.8s cubic-bezier(0.34,1.56,0.64,1)'
-                });
-                setTimeout(function () {
+                $('#bigHeart').css({ opacity: 1, transform: 'scale(1)', transition: 'all 0.8s cubic-bezier(0.34,1.56,0.64,1)' });
+                setTimeout(() => {
                     $('#completeMsg').animate({ opacity: 1 }, 1000);
                 }, 600);
+                // 烟花
                 launchFireworks();
-            }, 3500);
+            }, 3000);
         }
 
-        // ===== 烟花 =====
+        // ===== 烟花效果 =====
         function launchFireworks() {
-            var colors = ['#ff6b9d', '#ffd700', '#ff4757', '#ff8fab', '#e91e63', '#ffb6c1', '#ff69b4'];
-            for (var f = 0; f < 6; f++) {
-                (function (fi) {
-                    setTimeout(function () {
-                        var cx = Math.random() * $(window).width();
-                        var cy = Math.random() * $(window).height() * 0.5 + 50;
-                        for (var i = 0; i < 24; i++) {
-                            var angle = (i / 24) * Math.PI * 2;
-                            var dist = 50 + Math.random() * 90;
-                            var sz = 3 + Math.random() * 5;
-                            var color = colors[Math.floor(Math.random() * colors.length)];
-                            var $p = $('<div class="firework-particle"></div>').css({
-                                left: cx, top: cy,
-                                width: sz, height: sz,
-                                background: color,
-                                boxShadow: '0 0 6px ' + color
-                            });
-                            $('body').append($p);
-                            $p.animate({
-                                left: cx + Math.cos(angle) * dist,
-                                top: cy + Math.sin(angle) * dist,
-                                opacity: 0
-                            }, 900 + Math.random() * 500, function () { $(this).remove(); });
-                        }
-                    }, fi * 500);
-                })(f);
+            for (let f = 0; f < 5; f++) {
+                setTimeout(() => {
+                    const cx = Math.random() * $(window).width();
+                    const cy = Math.random() * $(window).height() * 0.5;
+                    const colors = ['#ff6b9d', '#ffd700', '#ff4757', '#ff8fab', '#e91e63', '#ffb6c1'];
+
+                    for (let i = 0; i < 20; i++) {
+                        const angle = (i / 20) * Math.PI * 2;
+                        const dist = 60 + Math.random() * 80;
+                        const size = 4 + Math.random() * 4;
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+
+                        const $p = $('<div class="firework-particle"></div>').css({
+                            left: cx + 'px',
+                            top: cy + 'px',
+                            width: size + 'px',
+                            height: size + 'px',
+                            background: color,
+                            boxShadow: `0 0 6px ${color}`
+                        });
+
+                        $('body').append($p);
+
+                        $p.animate({
+                            left: cx + Math.cos(angle) * dist,
+                            top: cy + Math.sin(angle) * dist,
+                            opacity: 0
+                        }, 1000 + Math.random() * 500, function() {
+                            $(this).remove();
+                        });
+                    }
+                }, f * 600);
             }
         }
 
-        // ===== 点击爆炸爱心 =====
-        $(document).on('click touchstart', function (e) {
-            var x = e.pageX || (e.originalEvent.touches && e.originalEvent.touches[0].pageX);
-            var y = e.pageY || (e.originalEvent.touches && e.originalEvent.touches[0].pageY);
-            if (!x || !y) return;
-            var emojis = ['💕', '💗', '💖', '❤️', '🌹', '✨', '💘'];
-            for (var i = 0; i < 10; i++) {
-                var angle = (i / 10) * Math.PI * 2;
-                var dist = 35 + Math.random() * 55;
-                var emoji = emojis[Math.floor(Math.random() * emojis.length)];
-                var $h = $('<div class="click-heart">' + emoji + '</div>').css({
-                    left: x, top: y,
-                    fontSize: (10 + Math.random() * 14) + 'px'
+        // ===== 点击屏幕爆炸爱心 =====
+        $(document).on('click touchstart', function(e) {
+            const x = e.pageX || e.originalEvent.touches[0].pageX;
+            const y = e.pageY || e.originalEvent.touches[0].pageY;
+            const emojis = ['💕', '💗', '💖', '❤️', '🌹', '✨', '💘'];
+
+            for (let i = 0; i < 8; i++) {
+                const angle = (i / 8) * Math.PI * 2;
+                const dist = 40 + Math.random() * 50;
+                const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                const size = 12 + Math.random() * 12;
+
+                const $h = $(`<div class="click-heart">${emoji}</div>`).css({
+                    left: x + 'px',
+                    top: y + 'px',
+                    fontSize: size + 'px'
                 });
+
                 $('body').append($h);
+
                 $h.animate({
                     left: x + Math.cos(angle) * dist,
-                    top: y + Math.sin(angle) * dist - 25,
+                    top: y + Math.sin(angle) * dist - 30,
                     opacity: 0
-                }, 700 + Math.random() * 400, function () { $(this).remove(); });
+                }, 800 + Math.random() * 400, function() {
+                    $(this).remove();
+                });
             }
         });
 
-        // ===== 鼠标轨迹 =====
-        var lastTrail = 0;
-        $(document).on('mousemove touchmove', function (e) {
-            var now = Date.now();
-            if (now - lastTrail < 90) return;
+        // ===== 鼠标/触摸跟随轨迹 =====
+        let lastTrail = 0;
+        $(document).on('mousemove touchmove', function(e) {
+            const now = Date.now();
+            if (now - lastTrail < 80) return;
             lastTrail = now;
-            var x = e.pageX || (e.originalEvent.touches && e.originalEvent.touches[0].pageX);
-            var y = e.pageY || (e.originalEvent.touches && e.originalEvent.touches[0].pageY);
+
+            const x = e.pageX || (e.originalEvent.touches && e.originalEvent.touches[0].pageX);
+            const y = e.pageY || (e.originalEvent.touches && e.originalEvent.touches[0].pageY);
             if (!x || !y) return;
-            var trails = ['💕', '✨', '💗', '·'];
-            var emoji = trails[Math.floor(Math.random() * trails.length)];
-            var $t = $('<div class="cursor-trail">' + emoji + '</div>').css({
-                left: x + (Math.random() - 0.5) * 16,
-                top: y + (Math.random() - 0.5) * 16,
-                fontSize: (7 + Math.random() * 8) + 'px',
-                opacity: 0.8
+
+            const trailEmojis = ['💕', '✨', '💗', '·'];
+            const emoji = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+
+            const $trail = $(`<div class="cursor-trail">${emoji}</div>`).css({
+                left: x + (Math.random() - 0.5) * 20 + 'px',
+                top: y + (Math.random() - 0.5) * 20 + 'px',
+                fontSize: (8 + Math.random() * 8) + 'px'
             });
-            $('body').append($t);
-            $t.animate({ top: y - 25 - Math.random() * 15, opacity: 0 }, 900, function () { $(this).remove(); });
-        });
 
-        // ===== 情侣动画 =====
-        (function boySway() {
-            $('#boy').animate({ marginLeft: '2px' }, 900, 'swing')
-                .animate({ marginLeft: '-1px' }, 900, 'swing', boySway);
-        })();
+            $('body').append($trail);
 
-        (function girlSway() {
-            $('#girl').animate({ marginLeft: '-2px' }, 900, 'swing')
-                .animate({ marginLeft: '1px' }, 900, 'swing', girlSway);
-        })();
-
-        (function heartPulse() {
-            $('#heartBetween').animate({ fontSize: '18px' }, 350)
-                .animate({ fontSize: '13px' }, 350, heartPulse);
-        })();
-
-        (function teddyJump() {
-            $('#teddy').animate({ marginBottom: '5px' }, 280)
-                .animate({ marginBottom: '0px' }, 280, teddyJump);
-        })();
-
-        setInterval(function () {
-            $('#teddyTail').css('transform', 'rotate(20deg)');
-            setTimeout(function () { $('#teddyTail').css('transform', 'rotate(-20deg)'); }, 180);
-        }, 380);
-
-        setInterval(function () {
-            $('.t-eye').css('transform', 'scaleY(0.1)');
-            setTimeout(function () { $('.t-eye').css('transform', 'scaleY(1)'); }, 130);
-        }, 2800);
-
-        // ===== 花束呼吸 =====
-        (function breathe() {
-            $('#bouquetWrap').animate({ marginTop: '-4px' }, 2200, 'swing')
-                .animate({ marginTop: '4px' }, 2200, 'swing', breathe);
-        })();
-
-        // ===== 背景飘落花瓣 =====
-        function createAmbientPetal() {
-            var petals = ['🌸', '💮', '🩷', '✿', '❀'];
-            var petal = petals[Math.floor(Math.random() * petals.length)];
-            var dur = 9000 + Math.random() * 5000;
-            var $p = $('<div style="position:fixed;pointer-events:none;z-index:1;font-size:' + (7 + Math.random() * 9) + 'px;left:' + (Math.random() * 100) + '%;top:-20px;opacity:0;">' + petal + '</div>');
-            $('body').append($p);
-            $p.animate(
-                { top: $(window).height() + 30, left: '+=' + ((Math.random() - 0.5) * 60), opacity: 0.5 },
-                { duration: dur, easing: 'linear', complete: function () { $(this).remove(); } }
-            );
-        }
-
-        setInterval(createAmbientPetal, 2500);
-        for (var i = 0; i < 4; i++) {
-            setTimeout(createAmbientPetal, i * 600);
-        }
-
-        // ===== 打字机 =====
-        function typeWriter($el, text, speed) {
-            var i = 0;
-            $el.css('opacity', 1);
-            var t = setInterval(function () {
-                if (i < text.length) {
-                    $el.text($el.text() + text[i]);
-                    i++;
-                } else {
-                    clearInterval(t);
-                }
-            }, speed);
-        }
-    });
-    </script>
-</body>
-</html>
+            $trail.animate({
+                top: y - 30 - Math.random() * 20,
+                opacity: 0
+            }, 1000, function() {
+                $(this).remove();
+            });
