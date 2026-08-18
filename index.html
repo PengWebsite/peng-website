@@ -8,17 +8,20 @@
 </head>
 <body>
 
+<!-- 背景光晕 -->
 <div class="bg-orb" style="width:45vmin;height:45vmin;background:rgba(255,182,193,.4);top:-8%;left:-8%"></div>
 <div class="bg-orb" style="width:38vmin;height:38vmin;background:rgba(255,228,235,.5);top:12%;right:-6%;animation-delay:-3s"></div>
 <div class="bg-orb" style="width:32vmin;height:32vmin;background:rgba(230,210,255,.3);bottom:8%;left:8%;animation-delay:-5s"></div>
 <div class="bg-orb" style="width:28vmin;height:28vmin;background:rgba(255,240,245,.5);top:38%;left:38%;animation-delay:-2s"></div>
 
+<!-- 头部信息 -->
 <div class="header">
   <div class="title">🌹 999朵玫瑰 · 七夕快乐 🌹</div>
   <div class="tip">已送出：<span id="num">0</span> / 999 朵</div>
   <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 </div>
 
+<!-- 花束主体 -->
 <div class="bouquet-wrap" id="bouquetWrap">
   <div class="flower-ball" id="flowerBall"></div>
   <div class="leaves">
@@ -33,76 +36,62 @@
     <div class="leaf small" style="transform:rotate(40deg) scaleX(-1)"></div>
   </div>
   <div class="paper-wrap" id="paperWrap">
-    <div class="bow">
-      <div class="knot"></div>
-      <div class="ribbon-l"></div>
-      <div class="ribbon-r"></div>
-    </div>
+    <div class="bow"><div class="knot"></div><div class="ribbon-l"></div><div class="ribbon-r"></div></div>
   </div>
 </div>
 
+<!-- 底部打字机文字 -->
 <div class="end-text" id="endText"></div>
 
+<!-- 精致情侣区 -->
 <div class="couple-section" id="coupleSection">
   <div class="couple-container">
-    <div class="heart-between">💗</div>
-    
+    <!-- 男孩 -->
     <div class="boy">
       <div class="b-head">
-        <div class="b-hair"></div>
-        <div class="b-eye-l"></div>
-        <div class="b-eye-r"></div>
-        <div class="b-mouth"></div>
+        <div class="b-eye-l"></div><div class="b-eye-r"></div>
+        <div class="b-blush-l"></div><div class="b-blush-r"></div>
       </div>
       <div class="b-body">
-        <div class="b-arm-l"></div>
-        <div class="b-arm-r"></div>
+        <div class="b-arm-l"></div><div class="b-arm-r"></div>
       </div>
-      <div class="b-legs">
-        <div class="b-leg"></div>
-        <div class="b-leg"></div>
-      </div>
+      <div class="b-legs"><div class="b-leg"></div><div class="b-leg"></div></div>
     </div>
-
+    <!-- 女孩 -->
     <div class="girl">
       <div class="g-head">
-        <div class="g-hair"></div>
-        <div class="g-eye-l"></div>
-        <div class="g-eye-r"></div>
-        <div class="g-mouth"></div>
+        <div class="g-hair-front"></div>
+        <div class="g-accessory"></div>
+        <div class="g-eye-l"></div><div class="g-eye-r"></div>
+        <div class="g-blush-l"></div><div class="g-blush-r"></div>
       </div>
       <div class="g-body">
         <div class="g-arm-l"></div>
         <div class="g-dress"></div>
         <div class="g-arm-r"></div>
       </div>
-      <div class="g-legs">
-        <div class="g-leg"></div>
-        <div class="g-leg"></div>
-      </div>
+      <div class="g-legs"><div class="g-leg"></div><div class="g-leg"></div></div>
     </div>
-
-    <div class="teddy">
-      <div class="t-tail"></div>
-      <div class="t-body"></div>
-      <div class="t-head">
-        <div class="t-ear-l"></div>
-        <div class="t-ear-r"></div>
-        <div class="t-eye-l"></div>
-        <div class="t-eye-r"></div>
-        <div class="t-nose"></div>
-      </div>
-    </div>
-    
+    <!-- 牵手爱心 -->
+    <div class="hand-heart">💕</div>
   </div>
 </div>
 
+<!-- 绝美信封弹框 -->
 <div class="complete-overlay" id="completeOverlay">
-  <div class="big-heart" id="bigHeart">💝</div>
-  <div class="msg" id="completeMsg">999朵玫瑰已送达<br>愿你被这世界温柔以待<br>七夕快乐 ❤️</div>
+  <div class="envelope-wrapper" id="envelopeWrapper">
+    <div class="envelope-flap" id="envelopeFlap"></div>
+    <div class="envelope-body"></div>
+    <div class="envelope-inner"></div>
+    <div class="seal" id="seal">❤</div>
+    <div class="letter" id="letter">
+      <div class="letter-heart" id="letterHeart">💝</div>
+      <div class="letter-msg" id="letterMsg">999朵玫瑰已送达<br>愿你被这世界温柔以待<br>七夕快乐</div>
+    </div>
+  </div>
 </div>
 
-<!-- 请确保 jquery.min.js 文件与此 HTML 文件在同一目录下 -->
+<!-- 本地 jQuery 引用 -->
 <script src="jquery.min.js"></script>
 <script>
 $(function(){
@@ -110,12 +99,14 @@ $(function(){
   var numEl = $('#num');
   var bar = $('#progressBar');
   
+  // 初始化入场动画
   $('.title').delay(200).animate({opacity: 1}, 600);
   $('.tip').delay(500).animate({opacity: 1}, 500);
   $('.progress-wrap').delay(700).animate({opacity: 1}, 500);
   $('#bouquetWrap').delay(400).animate({opacity: 1}, 800);
   $('#coupleSection').delay(1000).animate({opacity: 1}, 700);
 
+  // 构建花球
   function buildFlowerBall() {
     var ball = $('#flowerBall')[0];
     var size = ball.offsetWidth || 250;
@@ -167,9 +158,9 @@ $(function(){
     }, done);
     setTimeout(function() { $('#paperWrap').addClass('show'); }, done + 500);
   }
-  
   buildFlowerBall();
 
+  // 掉落玫瑰
   function createFallingRose() {
     if (total >= maxRose) return;
     var sz = 14 + Math.random() * 14;
@@ -177,10 +168,7 @@ $(function(){
     var dur = 2 + Math.random() * 1.5;
     
     var el = $('<div class="falling-rose">🌹</div>').css({
-      left: sx + 'px',
-      top: '-35px',
-      fontSize: sz + 'px',
-      animationDuration: dur + 's'
+      left: sx + 'px', top: '-35px', fontSize: sz + 'px', animationDuration: dur + 's'
     });
     $('body').append(el);
     el.on('animationend', function() { el.remove(); });
@@ -188,7 +176,6 @@ $(function(){
     total++;
     numEl.text(total);
     bar.css('width', (total / maxRose * 100) + '%');
-    
     if (total >= maxRose) onAllComplete();
   }
 
@@ -204,50 +191,61 @@ $(function(){
   }
   startGen(18);
 
+  // 完成时的信封动画序列
   function onAllComplete() {
     setTimeout(function() {
       typeWriter($('#endText')[0], '💌 予你天长地久的偏爱，999朵玫瑰代表长长久久', 70);
     }, 800);
     
     setTimeout(function() {
+      // 1. 显示遮罩
       $('#completeOverlay').addClass('show');
-      setTimeout(function() { $('#bigHeart').addClass('show'); }, 300);
-      setTimeout(function() { $('#completeMsg').addClass('show'); }, 900);
-      launchFireworks();
+      // 2. 信封放大出现
+      setTimeout(function() { $('#envelopeWrapper').addClass('show'); }, 300);
+      // 3. 火漆印章消失
+      setTimeout(function() { $('#seal').addClass('hide'); }, 1200);
+      // 4. 信封盖子 3D 打开
+      setTimeout(function() { $('#envelopeFlap').addClass('open'); }, 1500);
+      // 5. 信纸升起
+      setTimeout(function() { $('#letter').addClass('show'); }, 2000);
+      // 6. 信纸内容显示
+      setTimeout(function() { 
+        $('#letterHeart').addClass('show');
+        $('#letterMsg').addClass('show');
+      }, 2800);
+      // 7. 绽放烟花
+      setTimeout(function() { launchFireworks(); }, 3000);
     }, 2500);
   }
 
+  // 烟花特效
   function launchFireworks() {
     var colors = ['#ff6b9d', '#ffd700', '#ff4757', '#ff8fab', '#e91e63', '#ffb6c1', '#ff69b4'];
-    for (var f = 0; f < 6; f++) {
+    for (var f = 0; f < 8; f++) {
       (function(fi) {
         setTimeout(function() {
           var cx = Math.random() * window.innerWidth;
           var cy = Math.random() * window.innerHeight * 0.5 + 50;
-          for (var i = 0; i < 20; i++) {
-            var a = (i / 20) * Math.PI * 2;
+          for (var i = 0; i < 24; i++) {
+            var a = (i / 24) * Math.PI * 2;
             var d = 50 + Math.random() * 90;
             var s = 3 + Math.random() * 5;
             var c = colors[Math.floor(Math.random() * colors.length)];
-            
             var p = $('<div class="firework-particle"></div>').css({
-              left: cx + 'px',
-              top: cy + 'px',
-              width: s + 'px',
-              height: s + 'px',
-              background: c,
-              boxShadow: '0 0 6px ' + c
+              left: cx + 'px', top: cy + 'px', width: s + 'px', height: s + 'px',
+              background: c, boxShadow: '0 0 6px ' + c
             });
             p[0].style.setProperty('--fx', Math.cos(a) * d + 'px');
             p[0].style.setProperty('--fy', Math.sin(a) * d + 'px');
             $('body').append(p);
             p.on('animationend', function() { p.remove(); });
           }
-        }, fi * 500);
+        }, fi * 400);
       })(f);
     }
   }
 
+  // 点击爆心特效
   $(document).on('click', function(e) {
     var x = e.clientX, y = e.clientY;
     var em = ['💕', '💗', '💖', '❤️', '🌹', '✨', '💘'];
@@ -255,9 +253,7 @@ $(function(){
       var a = (i / 8) * Math.PI * 2;
       var d = 35 + Math.random() * 55;
       var h = $('<div class="click-heart">' + em[Math.floor(Math.random() * em.length)] + '</div>').css({
-        left: x + 'px',
-        top: y + 'px',
-        fontSize: (10 + Math.random() * 14) + 'px'
+        left: x + 'px', top: y + 'px', fontSize: (10 + Math.random() * 14) + 'px'
       });
       h[0].style.setProperty('--dx', Math.cos(a) * d + 'px');
       h[0].style.setProperty('--dy', (Math.sin(a) * d - 25) + 'px');
@@ -266,6 +262,7 @@ $(function(){
     }
   });
 
+  // 鼠标跟随特效
   var lt = 0;
   $(document).on('mousemove', function(e) {
     var now = Date.now();
@@ -281,31 +278,27 @@ $(function(){
     t.on('animationend', function() { t.remove(); });
   });
 
+  // 环境花瓣
   function createPetal() {
     var pts = ['🌸', '💮', '🩷', '✿', '❀'];
     var p = $('<div class="ambient-petal">' + pts[Math.floor(Math.random() * pts.length)] + '</div>').css({
-      left: (Math.random() * 100) + '%',
-      top: '-20px',
+      left: (Math.random() * 100) + '%', top: '-20px',
       fontSize: (7 + Math.random() * 9) + 'px',
       animationDuration: (9 + Math.random() * 5) + 's'
     });
     $('body').append(p);
     p.on('animationend', function() { p.remove(); });
   }
-  
   setInterval(createPetal, 2500);
   for (var i = 0; i < 4; i++) setTimeout(createPetal, i * 600);
 
+  // 打字机效果
   function typeWriter(el, text, sp) {
     var i = 0;
     el.style.opacity = 1;
     var t = setInterval(function() {
-      if (i < text.length) {
-        el.textContent += text[i];
-        i++;
-      } else {
-        clearInterval(t);
-      }
+      if (i < text.length) { el.textContent += text[i]; i++; }
+      else clearInterval(t);
     }, sp);
   }
 });
