@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
 <title>七夕｜999朵玫瑰花</title>
-<link rel="stylesheet" href="Style.css?_t=20260707">
+<link rel="stylesheet" href="Style.css">
 </head>
 <body>
 
@@ -43,7 +43,7 @@
 <!-- 底部打字机文字 -->
 <div class="end-text" id="endText"></div>
 
-<!-- 精致情侣区 -->
+<!-- 精致情侣与泰迪犬区 -->
 <div class="couple-section" id="coupleSection">
   <div class="couple-container">
     <!-- 男孩 -->
@@ -57,6 +57,7 @@
       </div>
       <div class="b-legs"><div class="b-leg"></div><div class="b-leg"></div></div>
     </div>
+    
     <!-- 女孩 -->
     <div class="girl">
       <div class="g-head">
@@ -72,6 +73,29 @@
       </div>
       <div class="g-legs"><div class="g-leg"></div><div class="g-leg"></div></div>
     </div>
+
+    <!-- 逼真小泰迪犬 -->
+    <div class="teddy">
+      <div class="t-tail"></div>
+      <div class="t-body">
+        <div class="t-leg-l"></div>
+        <div class="t-leg-r"></div>
+        <div class="t-paw-l"></div>
+        <div class="t-paw-r"></div>
+      </div>
+      <div class="t-head">
+        <div class="t-ear-l"></div>
+        <div class="t-ear-r"></div>
+        <div class="t-face">
+          <div class="t-eye-l"></div>
+          <div class="t-eye-r"></div>
+          <div class="t-nose"></div>
+          <div class="t-mouth"></div>
+          <div class="t-tongue"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- 牵手爱心 -->
     <div class="hand-heart">💕</div>
   </div>
@@ -98,6 +122,8 @@ $(function(){
   var maxRose = 600, total = 0;
   var numEl = $('#num');
   var bar = $('#progressBar');
+  var roseEls = [];
+  var leafEls = [];
   
   // 初始化入场动画
   $('.title').delay(200).animate({opacity: 1}, 600);
@@ -106,7 +132,7 @@ $(function(){
   $('#bouquetWrap').delay(400).animate({opacity: 1}, 800);
   $('#coupleSection').delay(1000).animate({opacity: 1}, 700);
 
-  // 构建花球
+  // 构建花球 (仅生成DOM，不直接显示，等待进度触发)
   function buildFlowerBall() {
     var ball = $('#flowerBall')[0];
     var size = ball.offsetWidth || 250;
@@ -131,7 +157,6 @@ $(function(){
     pos.sort(function(a, b) { return a.d - b.d; });
     var fs = Math.max(16, Math.floor(size / 10));
     var frag = document.createDocumentFragment();
-    var els = [];
     
     pos.forEach(function(p) {
       var s = document.createElement('span');
@@ -141,24 +166,44 @@ $(function(){
       s.style.top = (p.y - fs / 2) + 'px';
       s.style.fontSize = fs + 'px';
       frag.appendChild(s);
-      els.push(s);
+      roseEls.push(s);
     });
     
     ball.appendChild(frag);
-    els.forEach(function(el, idx) {
-      setTimeout(function() { el.classList.add('show'); }, 600 + idx * 60);
-    });
     
-    var done = 600 + els.length * 60 + 300;
-    setTimeout(function() {
-      $('.leaf').each(function(i) {
-        var e = $(this);
-        setTimeout(function() { e.addClass('show'); }, i * 70);
-      });
-    }, done);
-    setTimeout(function() { $('#paperWrap').addClass('show'); }, done + 500);
+    // 收集叶子元素
+    $('.leaf').each(function() {
+      leafEls.push($(this));
+    });
   }
   buildFlowerBall();
+
+  // 根据掉落的玫瑰数量，同步更新花球的构建进度
+  function updateBouquet() {
+    // 1. 玫瑰随进度显示 (0 - 600朵期间逐渐填满)
+    var roseShowCount = Math.floor((total / maxRose) * roseEls.length);
+    for (var i = 0; i < roseShowCount; i++) {
+      if (!roseEls[i].classList.contains('show')) {
+        roseEls[i].classList.add('show');
+      }
+    }
+    
+    // 2. 叶子在 150 朵后开始显示，到 300 朵全显示
+    if (total > 150) {
+      var leafProgress = Math.min(1, (total - 150) / 150);
+      var leafShowCount = Math.floor(leafProgress * leafEls.length);
+      for (var j = 0; j < leafShowCount; j++) {
+        if (!leafEls[j].hasClass('show')) {
+          leafEls[j].addClass('show');
+        }
+      }
+    }
+    
+    // 3. 包装纸在 250 朵后显示
+    if (total > 250 && !$('#paperWrap').hasClass('show')) {
+      $('#paperWrap').addClass('show');
+    }
+  }
 
   // 掉落玫瑰
   function createFallingRose() {
@@ -176,6 +221,10 @@ $(function(){
     total++;
     numEl.text(total);
     bar.css('width', (total / maxRose * 100) + '%');
+    
+    // 同步更新花球构建
+    updateBouquet();
+    
     if (total >= maxRose) onAllComplete();
   }
 
@@ -198,22 +247,15 @@ $(function(){
     }, 800);
     
     setTimeout(function() {
-      // 1. 显示遮罩
       $('#completeOverlay').addClass('show');
-      // 2. 信封放大出现
       setTimeout(function() { $('#envelopeWrapper').addClass('show'); }, 300);
-      // 3. 火漆印章消失
       setTimeout(function() { $('#seal').addClass('hide'); }, 1200);
-      // 4. 信封盖子 3D 打开
       setTimeout(function() { $('#envelopeFlap').addClass('open'); }, 1500);
-      // 5. 信纸升起
       setTimeout(function() { $('#letter').addClass('show'); }, 2000);
-      // 6. 信纸内容显示
       setTimeout(function() { 
         $('#letterHeart').addClass('show');
         $('#letterMsg').addClass('show');
       }, 2800);
-      // 7. 绽放烟花
       setTimeout(function() { launchFireworks(); }, 3000);
     }, 2500);
   }
