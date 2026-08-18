@@ -3,23 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>七夕｜999朵玫瑰花</title>
+<title>七夕｜节日快乐</title>
 <style>
-/* --- 基础重置与背景 --- */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC",sans-serif;background:linear-gradient(180deg,#fff 0%,#fff8fa 30%,#fff0f4 60%,#ffe8ef 100%);position:relative}
 .bg-orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.3;pointer-events:none;z-index:0;animation:orbFloat 10s ease-in-out infinite alternate}
 @keyframes orbFloat{to{transform:translate(20px,-15px) scale(1.08)}}
-
-/* --- 头部信息 --- */
 .header{position:fixed;top:max(12px,2.5vh);width:100%;text-align:center;z-index:100}
 .title{color:#d63384;font-size:clamp(18px,5vw,30px);text-shadow:0 2px 12px rgba(214,51,132,.2);letter-spacing:2px;opacity:0}
 .tip{color:#e075a0;font-size:clamp(12px,3vw,15px);margin-top:5px;opacity:0}
 .tip span{font-weight:bold;color:#d63384}
 .progress-wrap{width:min(180px,45vw);height:5px;background:rgba(255,182,193,.3);border-radius:3px;margin:8px auto 0;overflow:hidden;opacity:0}
 .progress-bar{height:100%;width:0;background:linear-gradient(90deg,#ff8fab,#d63384);border-radius:3px;transition:width .15s}
-
-/* --- 花束主体 --- */
 .bouquet-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;display:flex;flex-direction:column;align-items:center;opacity:0;animation:bouquetBreathe 4.4s ease-in-out infinite}
 @keyframes bouquetBreathe{0%,100%{margin-top:-4px}50%{margin-top:4px}}
 .flower-ball{position:relative;width:min(250px,62vw);height:min(250px,62vw);border-radius:50%}
@@ -40,8 +35,6 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 .bow .knot{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:9px;height:9px;background:radial-gradient(circle at 35% 35%,#ff6b9d,#c2185b);border-radius:50%;z-index:2}
 .bow .ribbon-l,.bow .ribbon-r{position:absolute;top:14px;width:5px;height:18px;background:linear-gradient(180deg,#e91e63,#ad1457);border-radius:0 0 3px 3px}
 .bow .ribbon-l{left:14px;transform:rotate(8deg)}.bow .ribbon-r{right:14px;transform:rotate(-8deg)}
-
-/* --- 动画特效类 --- */
 .falling-rose{position:fixed;z-index:50;pointer-events:none;user-select:none;animation:fallDown linear forwards}
 @keyframes fallDown{0%{transform:translateY(0) rotate(0);opacity:1}85%{opacity:1}100%{transform:translateY(110vh) rotate(320deg);opacity:0}}
 .click-heart{position:fixed;pointer-events:none;z-index:999;animation:heartBurst .8s ease-out forwards}
@@ -54,34 +47,22 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 @keyframes petalFall{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.5}90%{opacity:.4}100%{transform:translateY(110vh) translateX(30px) rotate(180deg);opacity:0}}
 .end-text{position:fixed;bottom:max(10px,2vh);width:100%;text-align:center;color:#d63384;font-size:clamp(12px,3.2vw,17px);z-index:100;opacity:0}
 
-/* =========================================
-   情侣区 (重点优化区域)
-   ========================================= */
+/* ========== 情侣区 ========== */
 .couple-section{position:fixed;bottom:25px;right:25px;z-index:60;transform:scale(.85);transform-origin:bottom right;opacity:0}
 .couple-container{display:flex;align-items:flex-end;gap:0;position:relative}
 
-/* --- 男孩 --- */
+/* --- 男孩 (无眼镜版) --- */
 .boy{width:45px;height:110px;position:relative;animation:boyBreathe 3s infinite ease-in-out;z-index:2}
 @keyframes boyBreathe{50%{transform:translateY(-2px)}}
 .b-head{width:30px;height:32px;background:linear-gradient(160deg,#ffe0b2,#ffcc80);border-radius:45% 45% 40% 40%;margin:0 auto;position:relative;box-shadow:inset -2px -2px 4px rgba(0,0,0,.05)}
-/* 头发 */
-.b-head::before{content:'';position:absolute;top:-6px;left:-3px;width:36px;height:20px;background:#3e2723;border-radius:50% 50% 10% 20%;z-index:5} 
-/* 嘴巴 */
+.b-head::before{content:'';position:absolute;top:-6px;left:-3px;width:36px;height:20px;background:#3e2723;border-radius:50% 50% 10% 20%;z-index:5}
 .b-head::after{content:'';position:absolute;top:22px;left:50%;transform:translateX(-50%);width:6px;height:3px;border-bottom:1.5px solid #d84315;border-radius:0 0 50% 50%;z-index:6}
-
-/* [优化] 男生眼镜 - 提高层级，加粗边框 */
-.b-glasses{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:24px;height:9px;z-index:10} 
-.b-glasses::before,.b-glasses::after{content:'';position:absolute;top:0;width:10px;height:8px;border:2px solid #2c2c2c;border-radius:4px;background:rgba(255,255,255,.15)} 
-.b-glasses::before{left:0}.b-glasses::after{right:0}
-.b-glasses-bridge{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:4px;height:2px;background:#2c2c2c;z-index:10}
-
-/* 眼睛与腮红 */
-.b-eye-l,.b-eye-r{position:absolute;top:14px;width:2.5px;height:3px;background:#212121;border-radius:50%;z-index:2}
+.b-brow-l,.b-brow-r{position:absolute;top:10px;width:5px;height:1.5px;background:#5d4037;border-radius:1px;z-index:6}
+.b-brow-l{left:5px;transform:rotate(-5deg)}.b-brow-r{right:5px;transform:rotate(5deg)}
+.b-eye-l,.b-eye-r{position:absolute;top:14px;width:3px;height:3.5px;background:#212121;border-radius:50%;z-index:4}
 .b-eye-l{left:6px}.b-eye-r{right:6px}
-.b-blush-l,.b-blush-r{position:absolute;top:19px;width:5px;height:3px;background:rgba(255,138,128,.3);border-radius:50%;z-index:2}
+.b-blush-l,.b-blush-r{position:absolute;top:19px;width:5px;height:3px;background:rgba(255,138,128,.3);border-radius:50%;z-index:4}
 .b-blush-l{left:3px}.b-blush-r{right:3px}
-
-/* 身体 */
 .b-body{width:34px;height:40px;background:linear-gradient(180deg,#64b5f6,#42a5f5);margin:2px auto 0;border-radius:8px 8px 4px 4px;position:relative;box-shadow:inset -3px 0 5px rgba(0,0,0,.1)}
 .b-body::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:10px;height:12px;background:#fff;clip-path:polygon(0 0,100% 0,80% 100%,20% 100%)}
 .b-body::after{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:8px;height:4px;background:#c2185b;border-radius:2px;box-shadow:-4px 0 0 #c2185b,4px 0 0 #c2185b}
@@ -91,55 +72,38 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 .b-leg{width:12px;height:30px;background:#263238;border-radius:3px;position:relative}
 .b-leg::after{content:'';position:absolute;bottom:-3px;left:-2px;width:16px;height:7px;background:#fff;border-radius:4px 6px 4px 4px;box-shadow:0 2px 4px rgba(0,0,0,.1)}
 
-/* --- 女孩 (重点优化：白皮肤 + 眼镜) --- */
+/* --- 女孩 (长发 + 冷白皮 + 无眼镜) --- */
 .girl{width:45px;height:105px;position:relative;animation:girlBreathe 3.2s infinite ease-in-out;margin-left:-12px;z-index:1}
 @keyframes girlBreathe{50%{transform:translateY(-2px)}}
-
-/* [优化] 女生头部皮肤 - 改为冷白皮 */
-.g-head{width:28px;height:30px;background:linear-gradient(160deg,#ffffff,#fffcfc);border-radius:45% 45% 40% 40%;margin:0 auto;position:relative;z-index:2;box-shadow:inset -2px -2px 4px rgba(0,0,0,.03)} 
-
-/* 头发后层 */
-.g-head::before{content:'';position:absolute;top:-4px;left:-8px;width:44px;height:40px;background:#4e342e;border-radius:40% 40% 30% 30%;z-index:-1;box-shadow:inset -3px -3px 5px rgba(0,0,0,.15)}
-/* 侧发 */
-.g-hair-side-l,.g-hair-side-r{position:absolute;top:18px;width:7px;height:28px;background:linear-gradient(180deg,#4e342e,#5d4037);border-radius:0 0 50% 50%;z-index:1;animation:hairSway 3.2s ease-in-out infinite}
-.g-hair-side-l{left:-7px;transform-origin:top center}
-.g-hair-side-r{right:-7px;transform-origin:top center;animation-delay:-1.6s}
-@keyframes hairSway{0%,100%{transform:rotate(0)}50%{transform:rotate(3deg)}}
-/* 嘴巴 */
-.g-head::after{content:'';position:absolute;top:21px;left:50%;transform:translateX(-50%);width:5px;height:2px;border-bottom:1.5px solid #e91e63;border-radius:0 0 50% 50%;z-index:6}
-/* 刘海 (注意层级，不要遮挡眼镜) */
-.g-hair-front{position:absolute;top:-2px;left:-2px;width:32px;height:12px;background:#5d4037;border-radius:40% 50% 20% 30%;z-index:3} 
-.g-accessory{position:absolute;top:4px;right:-4px;width:8px;height:8px;background:#ff4081;border-radius:50%;z-index:4;box-shadow:0 0 4px rgba(255,64,129,.5)}
-
-/* [优化] 女生眼镜 - 玫瑰金细框 + 高光 */
-.g-glasses{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:22px;height:9px;z-index:10} 
-.g-glasses::before,.g-glasses::after{content:'';position:absolute;top:0;width:9px;height:8px;border:1.5px solid #d81b60;border-radius:50%;background:rgba(255,255,255,.25);box-shadow:inset 1px 1px 2px rgba(255,255,255,.8)} 
-.g-glasses::before{left:0}.g-glasses::after{right:0}
-.g-glasses-bridge{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:4px;height:1.5px;background:#d81b60;z-index:10}
-
-/* 眼睛与睫毛 */
-.g-eye-l,.g-eye-r{position:absolute;top:13px;width:2.5px;height:3px;background:#212121;border-radius:50%;z-index:3}
+.g-hair-back{position:absolute;top:0;left:50%;transform:translateX(-50%);width:46px;height:65px;background:linear-gradient(180deg,#4e342e 0%,#3e2723 100%);border-radius:40% 40% 20% 20%;z-index:0;box-shadow:inset 2px 2px 5px rgba(255,255,255,.1)}
+.g-head{width:28px;height:30px;background:linear-gradient(160deg,#ffffff 0%,#fff5f7 100%);border-radius:45% 45% 40% 40%;margin:0 auto;position:relative;z-index:2;box-shadow:inset -2px -2px 4px rgba(0,0,0,.03),0 2px 4px rgba(0,0,0,.05)}
+.g-head::after{content:'';position:absolute;top:21px;left:50%;transform:translateX(-50%);width:4px;height:2px;background:#ff8a80;border-radius:50%;z-index:6;opacity:.8}
+.g-eye-l,.g-eye-r{position:absolute;top:13px;width:3px;height:3.5px;background:#212121;border-radius:50%;z-index:3}
 .g-eye-l{left:5px}.g-eye-r{right:5px}
-.g-eye-l::before,.g-eye-r::before{content:'';position:absolute;top:-2px;left:-1px;width:5px;height:2px;border-top:1px solid #212121;border-radius:50%}
-/* [优化] 腮红 - 皮肤变白后，腮红稍微加深一点更显气色 */
-.g-blush-l,.g-blush-r{position:absolute;top:18px;width:6px;height:3.5px;background:rgba(255,100,130,.45);border-radius:50%;z-index:3}
+.g-eye-l::before,.g-eye-r::before{content:'';position:absolute;top:-1.5px;left:-.5px;width:4px;height:2px;border-top:1px solid #212121;border-radius:50%}
+.g-eye-l::after,.g-eye-r::after{content:'';position:absolute;top:.5px;left:.5px;width:1px;height:1px;background:#fff;border-radius:50%}
+.g-blush-l,.g-blush-r{position:absolute;top:17px;width:6px;height:4px;background:rgba(255,82,121,.25);border-radius:50%;z-index:3;filter:blur(1px)}
 .g-blush-l{left:1px}.g-blush-r{right:1px}
-
-/* 身体与裙子 */
+.g-hair-front{position:absolute;top:-3px;left:-4px;width:36px;height:18px;background:#4e342e;border-radius:50% 50% 30% 30%;z-index:4}
+.g-hair-front::after{content:'';position:absolute;bottom:-2px;left:4px;width:28px;height:6px;background:radial-gradient(circle at 50% 0,transparent 40%,#4e342e 45%);background-size:8px 8px}
+.g-hair-side-l,.g-hair-side-r{position:absolute;top:12px;width:8px;height:45px;background:linear-gradient(180deg,#4e342e,#5d4037);z-index:3;border-radius:0 0 50% 50%;animation:hairSway 3.2s ease-in-out infinite}
+.g-hair-side-l{left:-5px;transform-origin:top center}
+.g-hair-side-r{right:-5px;transform-origin:top center;animation-delay:-1.6s}
+@keyframes hairSway{0%,100%{transform:rotate(0)}50%{transform:rotate(2deg)}}
+.g-accessory{position:absolute;top:2px;right:-2px;width:10px;height:8px;background:#ff4081;clip-path:polygon(20% 0%,80% 0%,100% 100%,0% 100%);z-index:5;border-radius:2px}
+.g-accessory::before{content:'';position:absolute;top:2px;left:3px;width:4px;height:4px;background:#fff;border-radius:50%;opacity:.6}
 .g-body{width:36px;height:40px;margin:2px auto 0;position:relative}
-.g-dress{width:100%;height:100%;background:linear-gradient(180deg,#f06292,#e91e63);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);position:relative;box-shadow:inset -3px 0 5px rgba(0,0,0,.1)}
-.g-dress::before{content:'';position:absolute;top:12px;left:0;right:0;height:3px;background:#fff;opacity:.8}
-/* [优化] 手臂皮肤 - 同步变白 */
-.g-arm-l{position:absolute;top:2px;left:-8px;width:7px;height:26px;background:#fffcfc;border-radius:4px;transform:rotate(35deg);transform-origin:top center;z-index:3}
-.g-arm-r{position:absolute;top:2px;right:-5px;width:7px;height:22px;background:#fffcfc;border-radius:4px;transform:rotate(-12deg);transform-origin:top center}
-/* 腿 */
+.g-dress{width:100%;height:100%;background:linear-gradient(180deg,#f8bbd0,#ec407a);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%);position:relative;box-shadow:inset -3px 0 5px rgba(0,0,0,.1)}
+.g-dress::before{content:'';position:absolute;top:6px;left:0;right:0;height:100%;background:repeating-linear-gradient(180deg,transparent,transparent 5px,rgba(255,255,255,.1) 5px,rgba(255,255,255,.1) 6px)}
+.g-arm-l{position:absolute;top:2px;left:-7px;width:6px;height:24px;background:#fff5f7;border-radius:4px;transform:rotate(30deg);transform-origin:top center;z-index:3}
+.g-arm-r{position:absolute;top:2px;right:-5px;width:6px;height:20px;background:#fff5f7;border-radius:4px;transform:rotate(-10deg);transform-origin:top center}
 .g-legs{display:flex;justify-content:center;gap:6px;margin-top:2px}
-.g-leg{width:7px;height:24px;background:#fffcfc;border-radius:3px;position:relative} 
-.g-leg::after{content:'';position:absolute;bottom:-2px;left:-1px;width:10px;height:6px;background:#c2185b;border-radius:3px 5px 3px 3px}
+.g-leg{width:6px;height:22px;background:#fff5f7;border-radius:3px;position:relative}
+.g-leg::after{content:'';position:absolute;bottom:-2px;left:-1px;width:8px;height:5px;background:#ec407a;border-radius:3px 5px 3px 3px}
 .hand-heart{position:absolute;top:65px;left:45%;transform:translateX(-50%);font-size:16px;z-index:4;animation:heartPulse .8s infinite alternate;filter:drop-shadow(0 2px 4px rgba(255,64,129,.4))}
 @keyframes heartPulse{to{transform:translateX(-50%) scale(1.2) translateY(-3px)}}
 
-/* --- 泰迪犬 (保持不变) --- */
+/* --- 泰迪犬 --- */
 .teddy{position:relative;width:55px;height:60px;margin-left:8px;margin-bottom:2px;animation:teddyBounce 1.5s infinite ease-in-out;z-index:5}
 @keyframes teddyBounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-3px)}60%{transform:translateY(0)}}
 .t-tail{position:absolute;bottom:22px;right:2px;width:14px;height:14px;background:radial-gradient(circle at 30% 30%,#cd853f,#8b4513);border-radius:50%;z-index:1;transform-origin:bottom left;animation:tailWag .3s infinite alternate ease-in-out;box-shadow:2px 2px 0 1px rgba(139,69,19,.4),-1px -1px 0 1px rgba(139,69,19,.3)}
@@ -171,24 +135,24 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 @keyframes pant{0%,60%,100%{height:0}70%,90%{height:5px}}
 
 /* --- 信封弹框 --- */
-.complete-overlay {position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(255, 255, 255, 0);display: flex;align-items: center;justify-content: center;z-index: 200;pointer-events: none;transition: background 1.5s;perspective: 1200px;}
-.complete-overlay.show {background: rgba(255, 245, 248, 0.92);pointer-events: auto;}
-.envelope-wrapper {position: relative;width: clamp(280px, 80vw, 360px);height: clamp(180px, 50vw, 240px);transform: scale(0);transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);transform-style: preserve-3d;}
-.envelope-wrapper.show {transform: scale(1);}
-.envelope-body {position: absolute;width: 100%;height: 100%;background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);border-radius: 12px;box-shadow: 0 20px 40px rgba(214, 51, 132, 0.25);z-index: 2;overflow: hidden;}
-.envelope-body::before {content: '';position: absolute;top: 0;left: 0;right: 0;bottom: 0;background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.2) 50%, transparent 52%);}
-.envelope-inner {position: absolute;bottom: 0;left: 0;width: 100%;height: 55%;background: linear-gradient(135deg, #ff8fab 0%, #ffb6c1 100%);clip-path: polygon(0 100%, 100% 100%, 50% 10%);z-index: 3;box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.05);backface-visibility: hidden;-webkit-backface-visibility: hidden;}
-.envelope-flap {position: absolute;top: 0;left: 0;width: 100%;height: 55%;background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);clip-path: polygon(0 0, 100% 0, 50% 100%);transform-origin: top center;transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);z-index: 5;box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);backface-visibility: hidden;-webkit-backface-visibility: hidden;}
-.envelope-flap.open {transform: rotateX(180deg);}
-.seal {position: absolute;top: 48%;left: 50%;transform: translate(-50%, -50%);width: 45px;height: 45px;background: radial-gradient(circle at 30% 30%, #ff4d6d, #c9184a);border-radius: 50%;z-index: 6;display: flex;align-items: center;justify-content: center;color: #fff;font-size: 20px;box-shadow: 0 4px 12px rgba(201, 24, 74, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2);transition: all 0.6s ease-in-out;}
-.seal.hide {transform: translate(-50%, -50%) scale(0);opacity: 0;}
-.letter {position: absolute;bottom: 8%;left: 6%;width: 88%;height: 85%;background: linear-gradient(180deg, #ffffff 0%, #fff5f7 100%);border-radius: 8px;box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);z-index: 1;transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s, z-index 0s 0.6s;display: flex;flex-direction: column;align-items: center;justify-content: center;padding: 20px;box-sizing: border-box;overflow: hidden;}
-.letter.show {transform: translateY(-65%);z-index: 4;}
-.letter::before {content: '';position: absolute;top: 0;left: 0;right: 0;height: 6px;background: linear-gradient(90deg, #ff8fab, #d63384, #ff8fab);border-radius: 8px 8px 0 0;}
-.letter-heart {font-size: clamp(36px, 10vw, 50px);opacity: 0;transform: scale(0);transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s;margin-bottom: 10px;}
-.letter-heart.show {opacity: 1;transform: scale(1);}
-.letter-msg {font-size: clamp(14px, 4vw, 18px);color: #d63384;text-align: center;line-height: 1.8;opacity: 0;transition: opacity 1s 1.5s;font-weight: 500;letter-spacing: 1px;}
-.letter-msg.show {opacity: 1;}
+.complete-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0);display:flex;align-items:center;justify-content:center;z-index:200;pointer-events:none;transition:background 1.5s;perspective:1200px}
+.complete-overlay.show{background:rgba(255,245,248,.92);pointer-events:auto}
+.envelope-wrapper{position:relative;width:clamp(280px,80vw,360px);height:clamp(180px,50vw,240px);transform:scale(0);transition:transform .8s cubic-bezier(.34,1.56,.64,1);transform-style:preserve-3d}
+.envelope-wrapper.show{transform:scale(1)}
+.envelope-body{position:absolute;width:100%;height:100%;background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%);border-radius:12px;box-shadow:0 20px 40px rgba(214,51,132,.25);z-index:2;overflow:hidden}
+.envelope-body::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent 48%,rgba(255,255,255,.2) 50%,transparent 52%)}
+.envelope-inner{position:absolute;bottom:0;left:0;width:100%;height:55%;background:linear-gradient(135deg,#ff8fab 0%,#ffb6c1 100%);clip-path:polygon(0 100%,100% 100%,50% 10%);z-index:3;box-shadow:inset 0 -5px 10px rgba(0,0,0,.05);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.envelope-flap{position:absolute;top:0;left:0;width:100%;height:55%;background:linear-gradient(135deg,#ff758c 0%,#ff7eb3 100%);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform 1s cubic-bezier(.4,0,.2,1);z-index:5;box-shadow:0 4px 10px rgba(0,0,0,.05);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.envelope-flap.open{transform:rotateX(180deg)}
+.seal{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);width:45px;height:45px;background:radial-gradient(circle at 30% 30%,#ff4d6d,#c9184a);border-radius:50%;z-index:6;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;box-shadow:0 4px 12px rgba(201,24,74,.4),inset 0 -2px 4px rgba(0,0,0,.2);transition:all .6s ease-in-out}
+.seal.hide{transform:translate(-50%,-50%) scale(0);opacity:0}
+.letter{position:absolute;bottom:8%;left:6%;width:88%;height:85%;background:linear-gradient(180deg,#ffffff 0%,#fff5f7 100%);border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,.08);z-index:1;transition:transform 1.2s cubic-bezier(.34,1.56,.64,1) .6s,z-index 0s .6s;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;overflow:hidden}
+.letter.show{transform:translateY(-65%);z-index:4}
+.letter::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#ff8fab,#d63384,#ff8fab);border-radius:8px 8px 0 0}
+.letter-heart{font-size:clamp(36px,10vw,50px);opacity:0;transform:scale(0);transition:all .8s cubic-bezier(.34,1.56,.64,1) 1.2s;margin-bottom:10px}
+.letter-heart.show{opacity:1;transform:scale(1)}
+.letter-msg{font-size:clamp(14px,4vw,18px);color:#d63384;text-align:center;line-height:1.8;opacity:0;transition:opacity 1s 1.5s;font-weight:500;letter-spacing:1px}
+.letter-msg.show{opacity:1}
 </style>
 </head>
 <body>
@@ -201,8 +165,8 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 
 <!-- 头部信息 -->
 <div class="header">
-  <div class="title">🌹 999朵玫瑰 · 七夕快乐 🌹</div>
-  <div class="tip">已送出：<span id="num">0</span> / 999 朵</div>
+  <div class="title">🌹 七夕快乐 🌹</div>
+  <div style="display:none" class="tip">已送出：<span id="num">0</span> / 999 朵</div>
   <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 </div>
 
@@ -228,16 +192,13 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 <!-- 底部打字机文字 -->
 <div class="end-text" id="endText"></div>
 
-<!-- 精致情侣与泰迪犬区 -->
+<!-- 情侣与泰迪犬区 -->
 <div class="couple-section" id="coupleSection">
   <div class="couple-container">
-    <!-- 男孩 -->
+    <!-- 男孩 (无眼镜，有眉毛) -->
     <div class="boy">
       <div class="b-head">
-        <!-- [新增] 眼镜结构 -->
-        <div class="b-glasses">
-          <div class="b-glasses-bridge"></div>
-        </div>
+        <div class="b-brow-l"></div><div class="b-brow-r"></div>
         <div class="b-eye-l"></div><div class="b-eye-r"></div>
         <div class="b-blush-l"></div><div class="b-blush-r"></div>
       </div>
@@ -247,18 +208,17 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
       <div class="b-legs"><div class="b-leg"></div><div class="b-leg"></div></div>
     </div>
     
-    <!-- 女孩 -->
+    <!-- 女孩 (长发白皮无眼镜) -->
     <div class="girl">
+      <div class="g-hair-back"></div>
       <div class="g-head">
         <div class="g-hair-front"></div>
         <div class="g-accessory"></div>
-        <!-- [新增] 眼镜结构 -->
-        <div class="g-glasses">
-          <div class="g-glasses-bridge"></div>
-        </div>
         <div class="g-eye-l"></div><div class="g-eye-r"></div>
         <div class="g-blush-l"></div><div class="g-blush-r"></div>
       </div>
+      <div class="g-hair-side-l"></div>
+      <div class="g-hair-side-r"></div>
       <div class="g-body">
         <div class="g-arm-l"></div>
         <div class="g-dress"></div>
@@ -267,21 +227,17 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
       <div class="g-legs"><div class="g-leg"></div><div class="g-leg"></div></div>
     </div>
 
-    <!-- 逼真小泰迪犬 -->
+    <!-- 泰迪犬 -->
     <div class="teddy">
       <div class="t-tail"></div>
       <div class="t-body">
-        <div class="t-leg-l"></div>
-        <div class="t-leg-r"></div>
-        <div class="t-paw-l"></div>
-        <div class="t-paw-r"></div>
+        <div class="t-leg-l"></div><div class="t-leg-r"></div>
+        <div class="t-paw-l"></div><div class="t-paw-r"></div>
       </div>
       <div class="t-head">
-        <div class="t-ear-l"></div>
-        <div class="t-ear-r"></div>
+        <div class="t-ear-l"></div><div class="t-ear-r"></div>
         <div class="t-face">
-          <div class="t-eye-l"></div>
-          <div class="t-eye-r"></div>
+          <div class="t-eye-l"></div><div class="t-eye-r"></div>
           <div class="t-nose"></div>
           <div class="t-mouth"></div>
           <div class="t-tongue"></div>
@@ -289,12 +245,11 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
       </div>
     </div>
 
-    <!-- 牵手爱心 -->
     <div class="hand-heart">💕</div>
   </div>
 </div>
 
-<!-- 绝美信封弹框 -->
+<!-- 信封弹框 -->
 <div class="complete-overlay" id="completeOverlay">
   <div class="envelope-wrapper" id="envelopeWrapper">
     <div class="envelope-flap" id="envelopeFlap"></div>
@@ -308,220 +263,156 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
   </div>
 </div>
 
-<!-- 本地 jQuery 引用 -->
 <script src="jquery.min.js"></script>
 <script>
 $(function(){
-  var maxRose = 600, total = 0;
-  var numEl = $('#num');
-  var bar = $('#progressBar');
-  var roseEls = [];
-  var leafEls = [];
+  var maxRose=900,total=0,numEl=$('#num'),bar=$('#progressBar'),roseEls=[],leafEls=[];
   
-  // 初始化入场动画
-  $('.title').delay(200).animate({opacity: 1}, 600);
-  $('.tip').delay(500).animate({opacity: 1}, 500);
-  $('.progress-wrap').delay(700).animate({opacity: 1}, 500);
-  $('#bouquetWrap').delay(400).animate({opacity: 1}, 800);
-  $('#coupleSection').delay(1000).animate({opacity: 1}, 700);
+  // 入场动画
+  $('.title').delay(200).animate({opacity:1},600);
+  $('.tip').delay(500).animate({opacity:1},500);
+  $('.progress-wrap').delay(700).animate({opacity:1},500);
+  $('#bouquetWrap').delay(400).animate({opacity:1},800);
+  $('#coupleSection').delay(1000).animate({opacity:1},700);
 
   // 构建花球
-  function buildFlowerBall() {
-    var ball = $('#flowerBall')[0];
-    var size = ball.offsetWidth || 250;
-    var radius = size / 2;
-    var ga = Math.PI * (3 - Math.sqrt(5));
-    var pos = [];
-    
-    for (var i = 0; i < 120; i++) {
-      var r = (radius - 6) * Math.sqrt(i / 120);
-      var t = i * ga;
-      pos.push({x: radius + r * Math.cos(t), y: radius + r * Math.sin(t), d: r});
-    }
-    for (var j = 0; j < 24; j++) {
-      var a = (j / 24) * Math.PI * 2;
-      pos.push({x: radius + (radius - 9) * Math.cos(a), y: radius + (radius - 9) * Math.sin(a), d: radius - 9});
-    }
-    for (var k = 0; k < 16; k++) {
-      var a2 = (k / 16) * Math.PI * 2 + 0.3;
-      pos.push({x: radius + (radius - 6) * 0.55 * Math.cos(a2), y: radius + (radius - 6) * 0.55 * Math.sin(a2), d: (radius - 6) * 0.55});
-    }
-    
-    pos.sort(function(a, b) { return a.d - b.d; });
-    var fs = Math.max(16, Math.floor(size / 10));
-    var frag = document.createDocumentFragment();
-    
-    pos.forEach(function(p) {
-      var s = document.createElement('span');
-      s.className = 'rose-item';
-      s.textContent = '🌹';
-      s.style.left = (p.x - fs / 2) + 'px';
-      s.style.top = (p.y - fs / 2) + 'px';
-      s.style.fontSize = fs + 'px';
-      frag.appendChild(s);
-      roseEls.push(s);
+  function buildFlowerBall(){
+    var ball=$('#flowerBall')[0],size=ball.offsetWidth||250,radius=size/2;
+    var ga=Math.PI*(3-Math.sqrt(5)),pos=[];
+    for(var i=0;i<120;i++){var r=(radius-6)*Math.sqrt(i/120),t=i*ga;pos.push({x:radius+r*Math.cos(t),y:radius+r*Math.sin(t),d:r})}
+    for(var j=0;j<24;j++){var a=(j/24)*Math.PI*2;pos.push({x:radius+(radius-9)*Math.cos(a),y:radius+(radius-9)*Math.sin(a),d:radius-9})}
+    for(var k=0;k<16;k++){var a2=(k/16)*Math.PI*2+.3;pos.push({x:radius+(radius-6)*.55*Math.cos(a2),y:radius+(radius-6)*.55*Math.sin(a2),d:(radius-6)*.55})}
+    pos.sort(function(a,b){return a.d-b.d});
+    var fs=Math.max(16,Math.floor(size/10)),frag=document.createDocumentFragment();
+    pos.forEach(function(p){
+      var s=document.createElement('span');s.className='rose-item';s.textContent='🌹';
+      s.style.left=(p.x-fs/2)+'px';s.style.top=(p.y-fs/2)+'px';s.style.fontSize=fs+'px';
+      frag.appendChild(s);roseEls.push(s);
     });
-    
     ball.appendChild(frag);
-    
-    $('.leaf').each(function() {
-      leafEls.push($(this));
-    });
+    $('.leaf').each(function(){leafEls.push($(this))});
   }
   buildFlowerBall();
 
-  function updateBouquet() {
-    var roseShowCount = Math.floor((total / maxRose) * roseEls.length);
-    for (var i = 0; i < roseShowCount; i++) {
-      if (!roseEls[i].classList.contains('show')) {
-        roseEls[i].classList.add('show');
-      }
+  // 更新花束进度
+  function updateBouquet(){
+    var rc=Math.floor((total/maxRose)*roseEls.length);
+    for(var i=0;i<rc;i++){if(!roseEls[i].classList.contains('show'))roseEls[i].classList.add('show')}
+    if(total>150){
+      var lp=Math.min(1,(total-150)/150),lc=Math.floor(lp*leafEls.length);
+      for(var j=0;j<lc;j++){if(!leafEls[j].hasClass('show'))leafEls[j].addClass('show')}
     }
-    
-    if (total > 150) {
-      var leafProgress = Math.min(1, (total - 150) / 150);
-      var leafShowCount = Math.floor(leafProgress * leafEls.length);
-      for (var j = 0; j < leafShowCount; j++) {
-        if (!leafEls[j].hasClass('show')) {
-          leafEls[j].addClass('show');
-        }
-      }
-    }
-    
-    if (total > 250 && !$('#paperWrap').hasClass('show')) {
-      $('#paperWrap').addClass('show');
-    }
+    if(total>250&&!$('#paperWrap').hasClass('show'))$('#paperWrap').addClass('show');
   }
 
-  function createFallingRose() {
-    if (total >= maxRose) return;
-    var sz = 14 + Math.random() * 14;
-    var sx = Math.random() * (window.innerWidth - 30);
-    var dur = 2 + Math.random() * 1.5;
-    
-    var el = $('<div class="falling-rose">🌹</div>').css({
-      left: sx + 'px', top: '-35px', fontSize: sz + 'px', animationDuration: dur + 's'
-    });
-    $('body').append(el);
-    el.on('animationend', function() { el.remove(); });
-    
-    total++;
-    numEl.text(total);
-    bar.css('width', (total / maxRose * 100) + '%');
-    
+  // 掉落玫瑰
+  function createFallingRose(){
+    if(total>=maxRose)return;
+    var sz=14+Math.random()*14,sx=Math.random()*(window.innerWidth-30),dur=2+Math.random()*1.5;
+    var el=$('<div class="falling-rose">🌹</div>').css({left:sx+'px',top:'-35px',fontSize:sz+'px',animationDuration:dur+'s'});
+    $('body').append(el);el.on('animationend',function(){el.remove()});
+    total++;numEl.text(total);bar.css('width',(total/maxRose*100)+'%');
     updateBouquet();
-    
-    if (total >= maxRose) onAllComplete();
+    if(total>=maxRose)onAllComplete();
   }
 
-  var phase = 0, gt = null;
-  function startGen(iv) {
-    if (gt) clearInterval(gt);
-    gt = setInterval(function() {
-      if (total >= maxRose) { clearInterval(gt); return; }
+  // 生成节奏控制
+  var phase=0,gt=null;
+  function startGen(iv){
+    if(gt)clearInterval(gt);
+    gt=setInterval(function(){
+      if(total>=maxRose){clearInterval(gt);return}
       createFallingRose();
-      if (phase === 0 && total > 250) { phase = 1; startGen(12); }
-      else if (phase === 1 && total > 600) { phase = 2; startGen(8); }
-    }, iv);
+      if(phase===0&&total>250){phase=1;startGen(12)}
+      else if(phase===1&&total>600){phase=2;startGen(8)}
+    },iv);
   }
   startGen(18);
 
-  function onAllComplete() {
-    setTimeout(function() {
-      typeWriter($('#endText')[0], '💌 予你天长地久的偏爱，999朵玫瑰代表长长久久', 70);
-    }, 800);
-    
-    setTimeout(function() {
+  // 完成后的信封动画序列
+  function onAllComplete(){
+    setTimeout(function(){typeWriter($('#endText')[0],'💌 予你天长地久的偏爱，999朵玫瑰代表长长久久',70)},800);
+    setTimeout(function(){
       $('#completeOverlay').addClass('show');
-      setTimeout(function() { $('#envelopeWrapper').addClass('show'); }, 300);
-      setTimeout(function() { $('#seal').addClass('hide'); }, 1200);
-      setTimeout(function() { $('#envelopeFlap').addClass('open'); }, 1500);
-      setTimeout(function() { $('#letter').addClass('show'); }, 2000);
-      setTimeout(function() { 
-        $('#letterHeart').addClass('show');
-        $('#letterMsg').addClass('show');
-      }, 2800);
-      setTimeout(function() { launchFireworks(); }, 3000);
-    }, 2500);
+      setTimeout(function(){$('#envelopeWrapper').addClass('show')},300);
+      setTimeout(function(){$('#seal').addClass('hide')},1200);
+      setTimeout(function(){$('#envelopeFlap').addClass('open')},1500);
+      setTimeout(function(){$('#letter').addClass('show')},2000);
+      setTimeout(function(){$('#letterHeart').addClass('show');$('#letterMsg').addClass('show')},2800);
+      setTimeout(function(){launchFireworks()},3000);
+    },2500);
   }
 
-  function launchFireworks() {
-    var colors = ['#ff6b9d', '#ffd700', '#ff4757', '#ff8fab', '#e91e63', '#ffb6c1', '#ff69b4'];
-    for (var f = 0; f < 8; f++) {
-      (function(fi) {
-        setTimeout(function() {
-          var cx = Math.random() * window.innerWidth;
-          var cy = Math.random() * window.innerHeight * 0.5 + 50;
-          for (var i = 0; i < 24; i++) {
-            var a = (i / 24) * Math.PI * 2;
-            var d = 50 + Math.random() * 90;
-            var s = 3 + Math.random() * 5;
-            var c = colors[Math.floor(Math.random() * colors.length)];
-            var p = $('<div class="firework-particle"></div>').css({
-              left: cx + 'px', top: cy + 'px', width: s + 'px', height: s + 'px',
-              background: c, boxShadow: '0 0 6px ' + c
+  // 烟花特效
+  function launchFireworks(){
+    var colors=['#ff6b9d','#ffd700','#ff4757','#ff8fab','#e91e63','#ffb6c1','#ff69b4'];
+    for(var f=0;f<8;f++){
+      (function(fi){
+        setTimeout(function(){
+          var cx=Math.random()*window.innerWidth,cy=Math.random()*window.innerHeight*.5+50;
+          for(var i=0;i<24;i++){
+            var a=(i/24)*Math.PI*2,d=50+Math.random()*90,s=3+Math.random()*5;
+            var c=colors[Math.floor(Math.random()*colors.length)];
+            var p=$('<div class="firework-particle"></div>').css({
+              left:cx+'px',top:cy+'px',width:s+'px',height:s+'px',
+              background:c,boxShadow:'0 0 6px '+c
             });
-            p[0].style.setProperty('--fx', Math.cos(a) * d + 'px');
-            p[0].style.setProperty('--fy', Math.sin(a) * d + 'px');
-            $('body').append(p);
-            p.on('animationend', function() { p.remove(); });
+            p[0].style.setProperty('--fx',Math.cos(a)*d+'px');
+            p[0].style.setProperty('--fy',Math.sin(a)*d+'px');
+            $('body').append(p);p.on('animationend',function(){p.remove()});
           }
-        }, fi * 400);
+        },fi*400);
       })(f);
     }
   }
 
-  $(document).on('click', function(e) {
-    var x = e.clientX, y = e.clientY;
-    var em = ['💕', '💗', '💖', '❤️', '🌹', '✨', '💘'];
-    for (var i = 0; i < 8; i++) {
-      var a = (i / 8) * Math.PI * 2;
-      var d = 35 + Math.random() * 55;
-      var h = $('<div class="click-heart">' + em[Math.floor(Math.random() * em.length)] + '</div>').css({
-        left: x + 'px', top: y + 'px', fontSize: (10 + Math.random() * 14) + 'px'
+  // 点击爆心
+  $(document).on('click',function(e){
+    var x=e.clientX,y=e.clientY,em=['💕','💗','💖','❤️','🌹','✨','💘'];
+    for(var i=0;i<8;i++){
+      var a=(i/8)*Math.PI*2,d=35+Math.random()*55;
+      var h=$('<div class="click-heart">'+em[Math.floor(Math.random()*em.length)]+'</div>').css({
+        left:x+'px',top:y+'px',fontSize:(10+Math.random()*14)+'px'
       });
-      h[0].style.setProperty('--dx', Math.cos(a) * d + 'px');
-      h[0].style.setProperty('--dy', (Math.sin(a) * d - 25) + 'px');
-      $('body').append(h);
-      h.on('animationend', function() { h.remove(); });
+      h[0].style.setProperty('--dx',Math.cos(a)*d+'px');
+      h[0].style.setProperty('--dy',(Math.sin(a)*d-25)+'px');
+      $('body').append(h);h.on('animationend',function(){h.remove()});
     }
   });
 
-  var lt = 0;
-  $(document).on('mousemove', function(e) {
-    var now = Date.now();
-    if (now - lt < 100) return;
-    lt = now;
-    var tr = ['💕', '✨', '💗', '·'];
-    var t = $('<div class="cursor-trail">' + tr[Math.floor(Math.random() * tr.length)] + '</div>').css({
-      left: (e.clientX + (Math.random() - 0.5) * 16) + 'px',
-      top: (e.clientY + (Math.random() - 0.5) * 16) + 'px',
-      fontSize: (7 + Math.random() * 8) + 'px'
+  // 鼠标跟随
+  var lt=0;
+  $(document).on('mousemove',function(e){
+    var now=Date.now();if(now-lt<100)return;lt=now;
+    var tr=['💕','✨','💗','·'];
+    var t=$('<div class="cursor-trail">'+tr[Math.floor(Math.random()*tr.length)]+'</div>').css({
+      left:(e.clientX+(Math.random()-.5)*16)+'px',
+      top:(e.clientY+(Math.random()-.5)*16)+'px',
+      fontSize:(7+Math.random()*8)+'px'
     });
-    $('body').append(t);
-    t.on('animationend', function() { t.remove(); });
+    $('body').append(t);t.on('animationend',function(){t.remove()});
   });
 
-  function createPetal() {
-    var pts = ['🌸', '💮', '🩷', '✿', '❀'];
-    var p = $('<div class="ambient-petal">' + pts[Math.floor(Math.random() * pts.length)] + '</div>').css({
-      left: (Math.random() * 100) + '%', top: '-20px',
-      fontSize: (7 + Math.random() * 9) + 'px',
-      animationDuration: (9 + Math.random() * 5) + 's'
+  // 环境花瓣
+  function createPetal(){
+    var pts=['🌸','💮','🩷','✿','❀'];
+    var p=$('<div class="ambient-petal">'+pts[Math.floor(Math.random()*pts.length)]+'</div>').css({
+      left:(Math.random()*100)+'%',top:'-20px',
+      fontSize:(7+Math.random()*9)+'px',
+      animationDuration:(9+Math.random()*5)+'s'
     });
-    $('body').append(p);
-    p.on('animationend', function() { p.remove(); });
+    $('body').append(p);p.on('animationend',function(){p.remove()});
   }
-  setInterval(createPetal, 2500);
-  for (var i = 0; i < 4; i++) setTimeout(createPetal, i * 600);
+  setInterval(createPetal,2500);
+  for(var i=0;i<4;i++)setTimeout(createPetal,i*600);
 
-  function typeWriter(el, text, sp) {
-    var i = 0;
-    el.style.opacity = 1;
-    var t = setInterval(function() {
-      if (i < text.length) { el.textContent += text[i]; i++; }
+  // 打字机效果
+  function typeWriter(el,text,sp){
+    var i=0;el.style.opacity=1;
+    var t=setInterval(function(){
+      if(i<text.length){el.textContent+=text[i];i++}
       else clearInterval(t);
-    }, sp);
+    },sp);
   }
 });
 </script>
