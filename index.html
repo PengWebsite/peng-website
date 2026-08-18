@@ -47,11 +47,11 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 @keyframes petalFall{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.5}90%{opacity:.4}100%{transform:translateY(110vh) translateX(30px) rotate(180deg);opacity:0}}
 .end-text{position:fixed;bottom:max(10px,2vh);width:100%;text-align:center;color:#d63384;font-size:clamp(12px,3.2vw,17px);z-index:100;opacity:0}
 
-/* ========== 情侣区 ========== */
+/* ========== ========== */
 .couple-section{position:fixed;bottom:25px;right:25px;z-index:60;transform:scale(.85);transform-origin:bottom right;opacity:0}
 .couple-container{display:flex;align-items:flex-end;gap:0;position:relative}
 
-/* --- 男孩 (无眼镜版) --- */
+/* --- 男孩 --- */
 .boy{width:45px;height:110px;position:relative;animation:boyBreathe 3s infinite ease-in-out;z-index:2}
 @keyframes boyBreathe{50%{transform:translateY(-2px)}}
 .b-head{width:30px;height:32px;background:linear-gradient(160deg,#ffe0b2,#ffcc80);border-radius:45% 45% 40% 40%;margin:0 auto;position:relative;box-shadow:inset -2px -2px 4px rgba(0,0,0,.05)}
@@ -72,7 +72,7 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 .b-leg{width:12px;height:30px;background:#263238;border-radius:3px;position:relative}
 .b-leg::after{content:'';position:absolute;bottom:-3px;left:-2px;width:16px;height:7px;background:#fff;border-radius:4px 6px 4px 4px;box-shadow:0 2px 4px rgba(0,0,0,.1)}
 
-/* --- 女孩 (长发 + 冷白皮 + 无眼镜) --- */
+/* --- 女孩--- */
 .girl{width:45px;height:105px;position:relative;animation:girlBreathe 3.2s infinite ease-in-out;margin-left:-12px;z-index:1}
 @keyframes girlBreathe{50%{transform:translateY(-2px)}}
 .g-hair-back{position:absolute;top:0;left:50%;transform:translateX(-50%);width:46px;height:65px;background:linear-gradient(180deg,#4e342e 0%,#3e2723 100%);border-radius:40% 40% 20% 20%;z-index:0;box-shadow:inset 2px 2px 5px rgba(255,255,255,.1)}
@@ -195,7 +195,7 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 <!-- 情侣与泰迪犬区 -->
 <div class="couple-section" id="coupleSection">
   <div class="couple-container">
-    <!-- 男孩 (无眼镜，有眉毛) -->
+    <!-- 男孩-->
     <div class="boy">
       <div class="b-head">
         <div class="b-brow-l"></div><div class="b-brow-r"></div>
@@ -208,7 +208,7 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
       <div class="b-legs"><div class="b-leg"></div><div class="b-leg"></div></div>
     </div>
     
-    <!-- 女孩 (长发白皮无眼镜) -->
+    <!-- 女孩-->
     <div class="girl">
       <div class="g-hair-back"></div>
       <div class="g-head">
