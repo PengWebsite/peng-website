@@ -167,7 +167,7 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
 <div class="header">
   <div class="title">🌹 七夕快乐 🌹</div>
   <div style="display:none" class="tip">已送出：<span id="num">0</span> / 999 朵</div>
-  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+  <div style="display:none" class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
 </div>
 
 <!-- 花束主体 -->
@@ -258,7 +258,7 @@ body{min-height:100vh;overflow:hidden;font-family:"Microsoft Yahei","PingFang SC
     <div class="seal" id="seal">❤</div>
     <div class="letter" id="letter">
       <div class="letter-heart" id="letterHeart">💝</div>
-      <div class="letter-msg" id="letterMsg">999朵玫瑰已送达<br>愿你被这世界温柔以待<br>七夕快乐</div>
+      <div class="letter-msg" id="letterMsg">TO：廖同学<br>七夕至，愿烟火与浪漫，皆如约而至<br>七夕快乐</div>
     </div>
   </div>
 </div>
@@ -331,7 +331,7 @@ $(function(){
 
   // 完成后的信封动画序列
   function onAllComplete(){
-    setTimeout(function(){typeWriter($('#endText')[0],'💌 予你天长地久的偏爱，999朵玫瑰代表长长久久',70)},800);
+    setTimeout(function(){typeWriter($('#endText')[0],'💌 予你天长地久的偏爱',70)},800);
     setTimeout(function(){
       $('#completeOverlay').addClass('show');
       setTimeout(function(){$('#envelopeWrapper').addClass('show')},300);
